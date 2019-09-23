@@ -1,0 +1,389 @@
+
+%%%%%%%%% PROPOSAL -- 15 pages (including Results from Prior NSF Support)
+\DeclareRobustCommand{\rchi}{{\mathpalette\irchi\relax}} %rais \chi a bit higher
+\newcommand{\irchi}[2]{\raisebox{\depth}{$#1\chi$}}
+
+\newcommand{\Alex}[1]{{\textcolor{blue}{[#1]}}}
+%\required{Project Description}
+\required{Elements: HemoPost: An open-source framework for novel and efficient post-processing of patient-specific computational data }
+\vspace{-.4cm}
+\section{Problem Overview and Significance}
+\vspace{-.3cm}
+Despite all of the promise that patient-specific computer modeling of hemodynamics and blood flow has offered, we do not yet fully understand the role that blood flow dynamics play in cardiovascular disease. Blood flow driven parameters (commonly referred to as hemodynamics) have been widely hypothesized to correlate to cardiovascular disease. Indeed, there have been several open-source software projects dedicated to patient-specific simulation of cardiovascular flows~\cite{Antigaetal08,Updegroveetal17}. These software are focused on pre-processing and/or simulating blood flow, and typically result in valuable, large spatiotemporal datasets. The complexity and significant user effort required in post-processing these data often results in a great chunk of hidden information never being used and therefore potential biomarkers of disease might go undetected. The \textbf{goal} of our project is to develop an efficient cyberinfrastructure that will enable automated and comprehensive post-processing of spatiotemporal hemodynamics data. 
+
+
+\noindent\textbf{\ul{Cardiovascular disease.}} According to the recent American Heart Association update~\cite{Benjaminetal19}, cardiovascular disease is responsible for one of every three deaths in the US where the annual cost associated with cardiovascular disease is more than \$351 billion. Cardiovascular disease initiation and progression is influenced by hemodynamics~\cite{Glagovetal88,Tayloretal99,SteinmanTaylor05}. It is established that cardiovascular disease occurs in specific regions of the vasculature that are often accompanied by disturbed blood flow patterns~\cite{CaroFitzGeraldSchroter69, Schwartzetal91,RichterEdelman06,Brownetal16} (the claim \textit{``cardiology is flow''} is proposed in a Circulation editorial paper~\cite{RichterEdelman06}). Hemodynamics influence cardiovascular disease in two different ways: \ul{1- \textit{Mechanical force on the vessel wall:}} Blood flow exerts two major forces on the vessel wall: wall shear stress (WSS) and stretch exerted on the endothelial cells and mechanical stretch exerted on the vessel wall constituents. \ul{2- \textit{Transport of biochemicals and cells:}} Blood flow is responsible for delivering certain biochemicals and cells from the circulation into the vessel wall and vice versa. 
+
+\noindent\textbf{\ul{Wall shear stress (WSS) vectors and structural stress tensors are important hemodynamic measures.}} Cardiovascular disease typically initiates at the vessel wall. Wall shear stress (WSS) is arguably the most important hemodynamic parameter in cardiovascular disease. By definition, WSS is the tangential component of traction on the wall, and therefore a surface vector field that is everywhere tangent to the wall surface. WSS provides a link between the mechanics of blood flow and the biology of disease. WSS vectors influence endothelial cell behavior and cardiovascular disease~\cite{Davies09} and more recently PI Arzani has shown that hidden topological structures in WSS control near-wall biological transport~\cite{Arzanietal16,Arzanietal16b}. Additionally, the structural stress at the vessel wall influences smooth muscle cells, fibroblasts, and vascular wall growth and remodeling~\cite{HagaLiChien07,AteshianHumphrey12,Gorielyetal19}. Currently, there is a need to identify prognostic hemodynamic measures with correlation to large clinical datasets. WSS vector and stress tensor derived measures are prominent candidates to serve as prognostic biomarkers. 
+
+\noindent\textbf{\ul{Hemodynamic datasets are inherently rich in information.}} WSS vectors vary spatially and temporally in magnitude and direction. These spatiotemporal gradients have been hypothesized to influence endothelial cell behavior~\cite{Nageletal99}. Additionally, spatial and temporal averaging is often employed in analyzing WSS features~\cite{ArzaniShadden16}. For instance, WSS variations with respect to a predefined direction (endothelial cell preferred direction determined by time-average WSS~\cite{Peifferetal13} or nominal flow direction determined by vessel centerline~\cite{ArzaniShadden16}) have been studied. Additionally, topological structures (stable and unstable manifolds) and critical points hidden in WSS vectors control near-wall transport and potentially endothelial cell behavior~\cite{Arzanietal16b,ArzaniShadden18}. The structural stress tensor (a second order tensor) also demonstrates rich spatiotemporal features and presents challenges in visualization and processing~\cite{ZhangZhang15,ZhangGaoZhang17,Meuschkeetal17}. 
+
+\noindent\textbf{\ul{There is a need for a comprehensive hemodynamic post-processing software.}} There have been significant effort dedicated to open-source software development for patient-specific pre-processing and simulation of cardiovascular flows (e.g. SimVascular, Crimson, VMTK). However, open-source software development for post-processing and visualization of the unique datasets created from these simulations has received very little attention. Specifically, co-PI Shadden has developed FlowTK (NSF SI$^2$ SSE funded) for calculating Lagrangian coherent structures in the velocity vector field and studying flow physics. Such tools significantly improve our understanding of the flow physics, however, they cannot be directly used to identify correlation with clinical data. Cardiovascular disease initiates at the vessel wall where we deal with WSS vectors (surface vector fields) and stress tensor data. There is an unmet need in developing a comprehensive software that can post-process surface-based data. This is a challenging task since it involves differential geometry and calculus on discrete surfaces, which is not easy for patient-specific hemodynamics modeling software users to develop. 
+
+
+\begin{tcolorbox}[colback =  green!20!white]
+\paragraph{\ul{Grand Challenge.}} 
+The large number of patients, the rich physics embedded in hemodynamics data, the complexity and user effort required in developing post-processing tools,  and the expertise required in calculating some hemodynamics measures prevent a comprehensive investigation of hemodynamics in patient-specific computer modeling studies. Development of an open-source cyberinfrastructure to meet these needs is an absolutely essential task to advance our knowledge about hemodynamics in cardiovascular disease and prevent the waste of hidden information that could potentially become prognostic biomarkers of disease. 
+
+\end{tcolorbox}
+
+\noindent\textbf{\ul{Our project gathers a well-qualified research team with national and international stakeholders in patient-specific hemodynamics modeling. }}
+PI Arzani (NAU) has extensive experience in developing novel hemodynamic post-processing methods. We have published a series of publications where we have introduced novel processing of spatiotemporal variations in WSS vectors~\cite{ArzaniShadden16} as well as novel WSS topological analysis~\cite{Arzanietal16,Arzanietal16b,ArzaniShadden18,FarghadanArzani19}. Co-PI Chen (University of Houston) is an expert in surface vector field visualization, geometric modeling, and is actively developing novel vector-valued data processing tools as part of his NSF CAREER award. Co-PI Groce (NAU) is an expert in Python software development and testing (Associate Editor for Software Testing for IEEE Software magazine). Co-PI Groce has developed several software testing methods as part of his NSF CAREER award. Co-PI Shadden (UC Berkeley) and Collaborator Marsden (Stanford) have  successfully led the development of the NSF funded open-source SimVascular project for patient-specific hemodynamics modeling, which now has a significant network of users worldwide.  Additionally, Co-PI Shadden has developed novel cardiovascular transport modeling tools as part of his NSF CAREER award~\cite{Arzanietal16b,HansenShadden16,HansenArzaniShadden19}. Our team (PI Arzani, Co-PI Shadden, and Co-PI Chen) has successful collaboration history where we have developed novel WSS processing methods~\cite{Arzanietal16,Arzanietal16b}. Finally, our project closely involves stakeholders in patient-specific hemodynamic software development as well as users interested in correlating hemodynamics to clinical data. Namely, Dr. David Steinman's group (University of Toronto) will work with our research team for testing our software capabilities. Dr. Steinman is widely recognized as a pioneer in the integration of medical imaging and computational modeling, and their use in the study of cardiovascular disease development, diagnosis, and treatment. He is the co-founder of the widely-used open-source Vascular Modelling ToolKit (VMTK) software, which is used in pre-processing data for patient-specific hemodynamics simulations. Dr. John LaDisa (Marquette), Dr. Alison Marsden (Stanford), Dr. Ender Finol (UT San Antonio), Dr. Mahdi Esmaily (Cornel), Dr. Umberto Morbiducci (Politecnico di Torino) will actively work with our research team in testing our software in a wide range of cardiovascular applications. We believe our software also has significant potential in other biological flow domains. We will work with Dr. Jessica Oakes (Northeastern) in testing our software in respiratory flows. 
+
+
+\vspace{-.5cm}
+\section{Research Objectives}
+\vspace{-.3cm}
+Our goal is to develop a software platform that obtains the output of patient-specific blood flow modeling software,  automatically computes a wide range of hemodynamic measures, processes them for advanced visualization, and if clinical data is available, seeks to identify prognostic biomarkers of disease (see Fig.~\ref{fig:overview}):
+
+ \noindent  \ul{Task 1: Automated and comprehensive post-processing of hemodynamics data: traditional WSS measures and structural stress tensor. } HemoPost will compute a wide range of WSS measures proposed in the literature. Namely, WSS measures quantifying spatiotemporal gradients in magnitude/direction, temporal oscillation, and multidirectional behavior will be quantified. We will also perform a similar analysis for the structural stress tensor. Comprehensive quantification of these measures requires significant user effort and post-processing code developments, which our software will offer. 
+
+ \noindent  \ul{Task 2:  Novel analysis of WSS data: topological WSS measures.} HemoPost will perform novel topological analysis of WSS, recently developed by our  team. Namely, WSS fixed points will be classified, stable and unstable manifolds will be computed, and recent WSS-based transport measures will be quantified. 
+ 
+ \noindent  \ul{Task 3: Novel visualization of data: surface-based visualization of stress tensor and WSS.} Visualization of spatiotemporally varying surface vector and tensor fields is a difficult task. We will incorporate recent developments in surface vector and tensor field visualization by Co-PI Chen in our software.  This will allow users to improve their physical understanding of the hemodynamics data in addition to quantitative analysis. 
+ 
+   
+ \noindent  \ul{Task 4: Identification of statistical correlations between clinical data and computational measures.} Often the goal in post-processing hemodynamics is to identify prognostic disease biomarkers. Given input clinical data, HemoPost will investigate correlation among all quantified measures and clinical data. The goal is to provide a software that minimizes the risk of losing potentially valuable information hidden in the data. 
+ 
+ \noindent  \ul{Task 5: Closely work with national and international stakeholders in patient-specific computer modeling to test our software in different applications.} We will actively engage patient-specific computational modeling software development experts as well as users of such software during HemoPost development.
+
+ 
+ \begin{figure}[h!]
+  \centering
+  \vspace*{-.2cm}
+    \includegraphics[scale = 0.4]{figs/overview.pdf}
+  \vspace*{-.2cm}  \caption{An overview of the proposed HemoPost software is shown.}
+  \label{fig:overview}
+\end{figure}
+
+  \vspace*{-1cm}
+\section{Intellectual Merits}
+\begin{wrapfigure}[12]{r}{2.6in}
+  \centering
+  \vspace*{-1cm}
+    \includegraphics[width=2.6in]{figs/coarc_sim.pdf}
+  \caption{SimVascular enables patient-specific computer model construction from medical image data and enables assigning physiological boundary conditions for patient-specific computational fluid dynamics simulations. An example in an aortic coarctation is shown~\cite{Arzanietal12} }
+  \label{fig:coarc}
+\end{wrapfigure}
+  \vspace*{-.2cm}
+\textbf{\ul{HemoPost builds on the successful NSF-funded SimVascular software.}} Co-PI Shadden and Collaborator Marsden have led the widely used and successful SimVascular project (NSF OAC \#1339841). An overview of model construction in SimVascular is shown in Fig.~\ref{fig:coarc}. GIVE SOME STATS ABOUT SIMVASCULAR. Our software will be included on SimVascular website. HemoPost will be developed based on Visualization Toolkit (VTK) format, which is the standard output format in SimVascular and is widely used in patient-specific modeling software (e.g. VMTK and Crimson). Additionally, our software will be heavily based on the open-source VTK libraries where we leverage VTK tools for data processing and visualization. 
+
+\noindent\textbf{\ul{HemoPost is driven based on well-recognized needs of the cardiovascular engineering community.}} While a great deal of effort is spent on pre-processing data and running patient-specific cardiovascular flow simulations, data post-processing is often based on a couple of simple flow-driven measures. In order to better understand the physics of blood flow in cardiovascular flows, extract biomarkers  of cardiovascular disease, and develop predictive models of disease growth, there is a need for comprehensive  post-processing of data, which HemoPost will offer. We also anticipate that our software could be adopted by biofluids research communities beyond cardiovascular flows (eg. respiratory flows, flow inside tumors, etc.).  
+
+\noindent\textbf{\ul{Our software incorporates recent novel topological analysis and visualization tools and integrates innovation and discovery.}} Our team has recently developed novel topological methods for analyzing WSS vector fields. Briefly, we can use WSS vectors to study near-wall transport without the need to solve computationally expensive 3D transport problems. Our method introduces an unprecedented role for WSS measures. That is, we can use WSS vectors to study near-wall transport in addition to the traditional shear stress perspective. Topological analysis of WSS requires a cyberinfrastructure that integrates computational geometry modeling of surface vector fields with a surface transport model, and our software will offer this novel analysis tool to the community. Our comprehensive and innovative quantification of hemodynamic measures enables potentially unique discovery about biomarkers of disease. We will closely work with biomedical engineers and use existing clinical datasets available to our team to test our software in real-world applications. Finally, novel visualization tools, highly relevant to hemodynamics data, but not available in other publicly available visualization software will be integrated in HemoPost. 
+
+\noindent\textbf{\ul{Our proposal integrates close collaboration among national and international stakeholders.}} We will closely work with cardiovascular bioengineers to test our software in different applications. Our proposal gathers well-known leaders and experts in patient-specific cardiovascular software development. 
+
+\noindent\textbf{\ul{Our team is dedicated to making a sustainable software.}} Our goal is to make our software sustainable for sustained impact on basic and translational cardiovascular research. We are aware that new hemodynamic-based parameters might be proposed in the literature. We will update our software to include latest proposed measures in the field. Additionally, our software will include an easy-to-use VTK scripting environment where the users can use built-in VTK capabilities to define their own hemodynamic measure and add that to the software. We will create documented tutorials on how this could be accomplished. 
+
+
+
+  \vspace*{-.4cm}
+\section{Preliminary work} \label{sec:prel}
+\begin{wrapfigure}[12]{r}{1.9in}
+  \centering
+  \vspace*{-1cm}
+    \includegraphics[width=1.9in]{figs/CFD_coronary_carotid.pdf}
+  \caption{CFD simulation in coronary and carotid arteries. These simulations are doing using SimVascular.}
+  \label{fig:cfd}
+\end{wrapfigure}
+  \vspace*{-.4cm}
+\textbf{\ul{Patient-specific computational fluid dynamics (CFD).}} PI Arzani and Co-PI Shadden have extensive experience in patient-specific CFD simulation of a wide range of cardiovascular flows  such as aneurysms~\cite{ArzaniShadden12,Arzanietal14b,Arzanietal14a,Arzani18}, aortic coarctation~\cite{Arzanietal12}, and coronary/carotid arteries~\cite{Arzanietal16b} (see Fig.~\ref{fig:cfd}). These simulations were done using the NSF-funded open-source software package SimVascular~\cite{Updegroveetal17}. PI Arzani has been an early SimVascular user prior to its open-source release and has contributed to early validation studies~\cite{Arzanietal12}. 
+
+%Herein, we will use the Open Source Medical Software Corporation (OSMSC) data repository (www.vascularmodel.com) to obtain image-based models for CFD simulations and software testing. OSMSC has all of the required data for setting up an image-based simulation.
+
+
+%These simulations were done using the open-source software package SimVascular, a comprehensive package for performing image-based CFD simulations~\cite{Updegroveetal17}. The PI has been one of the early users of SimVascular.
+%\ul{Our patient-specific CFD framework is the same paradigm used by HeartFlow to noninvasively compute fractional flow reserve (FFR), and therefore has shown its potential for translational impact on healthcare}~\cite{Kooetal11,TaylorFonteMin13,Minetal15}.
+
+
+\noindent\textbf{\ul{Our software builds on the widely successful NSF-funded SimVascular project.}}
+
+
+
+\begin{wrapfigure}[20]{r}{3.1in}
+  \centering
+ \vspace*{-.4cm}
+    \includegraphics[width=3.1in]{figs/WSS_prelim.pdf}
+  \caption{a) Using the geometric centerline, WSS vectors are decomposed to tangential and binormal directions in an aneurysm. b) Topological analysis of WSS in a carotid artery. The attracting WSS LCS dictate regions of high biochemical surface concentration. }
+  \label{fig:wss-prelim}
+\end{wrapfigure}
+
+\newpage
+\noindent\textbf{\ul{Comprehensive characterization of WSS in complex cardiovascular flows.}} PI Arzani and Co-PI Shadden have performed a comprehensive quantification of WSS vector fields in abdominal aortic aneurysms~\cite{ArzaniShadden16} where complex and chaotic blood flow patterns exist~\cite{ArzaniShadden12,Arzanietal14a}.  To characterize the spatial and temporal features of WSS magnitude and direction, we quantified measures such as WSS angle gradient, WSS magnitude gradient, WSS angle time derivative, and WSS magnitude time derivative. Additionally, a new method based on nominal flow direction (geometric centerline) was proposed to decompose WSS vectors into axial (tangent) and secondary (binormal) components (Fig.~\ref{fig:wss-prelim}a). To further characterize WSS vectorial behavior, backward WSS, mix gradients, and relative gradient measures were defined and studied. 
+
+
+
+\noindent\textbf{\ul{Novel topological analysis of WSS vectors.}} The PI has recently introduced the concept of Lagrangian WSS structures~\cite{Arzanietal16,Arzanietal16b}. In the past decade, Lagrangian coherent structures (LCS) have found many applications in studying the flow physics of transient or chaotic flows~\cite{Shadden11,Haller15}, including cardiovascular flows~\cite{ShaddenTaylor08,ShaddenArzani15}. The PI has shown the emergence of similar structures in the WSS vector field (WSS LCS)~\cite{Arzanietal16,Arzanietal16b}. These structures were previously used in a dynamical system theory of flow separation~\cite{SuranaGrunbergHaller06,Suranaetal08}. The PI has rigorously computed these structures and has shown that WSS LCS control near-wall transport and dictate the biochemical surface concentration distribution. This is of high biological interest, since near-wall transport of certain biochemicals and cells control major cardiovascular complications such as atherosclerosis~\cite{Ethier02} and thrombosis~\cite{Basmadjian90}. The \ul{attracting WSS LCS} attract biochemicals in their basin of attraction, leading to high near-wall concentration and stagnation in their vicinity. The \ul{repelling WSS LCS}  act as near-wall transport barriers and determine the boundaries for the basins of attraction. This is valuable information as it allows prediction of near-wall transport with a robust topological analysis (Fig.~\ref{fig:wss-prelim}b). 
+
+
+
+%\noindent\textbf{\ul{Novel surface-based vector field visualization.}}
+%GUONING: preliminary data (one small figure). 
+
+
+
+
+
+
+
+
+
+
+
+
+\vspace{-.5cm}
+\section{Research Plan}
+\vspace{-.3cm}
+\subsection{Task 1: Automated and comprehensive post-processing of hemodynamics data: traditional WSS measures and structural stress tensor. }
+\vspace{-.2cm}
+\noindent\textbf{\ul{Rationale.}} Post-processing computational hemodynamics data is a time-consuming task. Most cardiovascular engineering researchers spend a significant amount of time  creating patient-specific computer models, pre-processing, and running blood flow simulations. With the advances in high-performance computing, these simulations often generate spatiotemporally highly resolved hemodynamics data. Unfortunately, post-processing data is very commonly overlooked, and most researchers simply quantify \ul{at most} a few standard WSS measures and seek correlations between these measures and clinical data. Based on our experience, developing post-processing scripts to even quantify these standard and simple WSS measures can be a time-consuming task for a graduate student, let alone quantification of mathematically more complex measures. There is a need for a comprehensive post-processing software to complete the pipeline in patient-specific computer modeling of cardiovascular disease. 
+
+
+\noindent\textbf{\ul{Significance.}} HemoPost will extract a wide range of hemodynamic measures from patient-specific simulations. Such a software will not only reduce the burden on users for post-processing complex spatiotemporally varying hemodynamics data, but also minimize the risk of loosing potentially valuable biomarkers hidden in the data. 
+
+\noindent\textbf{\ul{Work planned:}} \\
+\noindent\textbf{\ul{a) Develop a software to read the output of patient-specific simulations as input and quantify a wide range of hemodynamic parameters.}}
+Hemopost will receive velocity vector data defined spatially over a computational mesh and temporally over an arbitrary number of cardiac cycles. Hemopost will compute the WSS vector field on the surface mesh or alternatively, the WSS vector field data could be given to the software (most standard CFD software output WSS vectors). Additionally, to make the software as comprehensive as possible, we will also add functionality for analyzing structural stress tensor data. This will be useful for fluid-structure interaction (FSI) or structural mechanics simulations. The structural stress tensor will be defined over the surface mesh data similar to WSS vectors if a shell model is used (e.g. the coupled momentum method~\cite{Figueroaetal06} available in SimVascular and Crimson), or defined over a 3D mesh representing the solid domain (vessel wall) if fully 3D structural mechanics solvers are used. 
+
+Regarding WSS measures, Hemopost will compute: \textbf{1-} Time-average WSS magnitude (TAWSS)~\cite{ArzaniShadden16} to quantify time-averaged shear stress exerted on the endothelial cells. Additionally, temporal peak WSS magnitude will be computed. \textbf{2-} Oscillatory shear index (OSI)~\cite{Kuetal85} to quantify oscillatory WSS vector behavior.   \textbf{3-} {Relative residence time (RRT)~\cite{LeeAntigaSteinman09}}, defined as one over the TAWSS vector magnitude. RRT serves as a simple approximation to near-wall flow stagnation, an important physiological factor in cardiovascular disease~\cite{Arzanietal16b}. Note that the aforementioned three parameters are the standard parameters computed in many state-of-the-art patient-specific CFD studies.   \textbf{4-} Spatial and temporal gradients in WSS magnitude and direction (angle)~\cite{ArzaniShadden16}.  These measures include the spatial gradient in WSS magnitude, spatial gradient in WSS direction, temporal gradient in WSS magnitude, and temporal gradient in WSS direction. We will incorporate the curvature effects into gradient calculations on discrete surfaces~\cite{ArzaniShadden16}. \textbf{5-} Relative WSS gradients~\cite{ArzaniShadden16}. Our prior work in aneurysms has shown that WSS gradients have high correlation with WSS magnitude. We will also compute our proposed relative WSS gradients where we normalize gradients by WSS magnitude.  \textbf{6-} Axial and secondary WSS components~\cite{ArzaniShadden16,Morbiduccietal15} to characterize WSS along and normal to the nominal flow direction (geometric centerline projected along the tangent plane on the surface).  \textbf{7-} Transverse WSS (transWSS)~\cite{Peifferetal13}, a measure of multidirectional shear stress. \textbf{8-} Backward WSS~\cite{ArzaniShadden16} to quantify the accumulated amount of negative WSS vectors.  \textbf{9-} Mixed WSS gradients~\cite{ArzaniShadden16} to integrate the spatiotemporal variations in magnitude and direction into a single measure.  \textbf{10-} Directional OSI~\cite{Chakrabortyetal12} to quantify biaxial oscillation in WSS vectors. \textbf{11-} Wall shear stress divergence (WSSdiv)~\cite{ArzaniShadden18} to quantify the extent of divergence or convergence in WSS vectors. \textbf{12-} Gradient oscillatory number (GON)~\cite{Shimogonyaetal09} to characterize temporal fluctuation in spatial WSS gradients. \textbf{13-} Aneurysm formation indicator (AFI)~\cite{Manthaetal06} to quantify the angle between WSS vectors and TAWSS vector. \textbf{14-} WSS harmonic index~\cite{LeeAntigaSteinman09} to characterize the frequency dependent effect of shear stress on endothelial cells. 
+
+Regarding structural stress tensor, Hemopost will compute: \textbf{1-} Time-averaged and peak circumferential, radial, and longitudinal stress components. \textbf{2-} The peak temporal Von Mises stress, which is often of interest in structural analysis of vessel wall rupture~\cite{HumphreyHolzapfel12}. \textbf{3-} Spatial and temporal gradients in circumferential, radial, and longitudinal stress components. 
+
+
+\noindent\textbf{\ul{b) Develop a sustainable Python architecture that leverages VTK libraries and enables defining new hemodynamic measures to support continuous scientific discovery.  }} 
+HemoPost will be developed in Python, hosted on Github, and will be heavily based on the open-source visualization toolkit (VTK) libraries. PI Arzani has extensive experience in developing various VTK-based post-processing scripts in Python for analyzing patient-specific simulation results.  Promoting code quality, regular updates, a test suite for key functionality, and increasing the emphasis on documentation during the grant period are all critical steps to keep HemoPost viable and useful beyond the end of the grant period. To maintain HemoPost as new versions of VTK become available, the source code will be compiled, tested, and updated regularly when Kitware releases new VTK versions. We recognize that often researchers would like to define new hemodynamic measures (motivated by experimental results or disease pathophysiology). We will provide detailed documentation on how to define a new hemodynamic parameter in HemoPost and extend the software using a configuration file. Our goal is to have a software that is configurable and extensible. Of course, the users will also be able to create an issue and discussion on HemoPost forum related to their new hemodynamic measure and the hemodynamic measure will be added to HemoPost. 
+
+
+
+
+
+ 
+
+\noindent\textbf{\ul{Expected outcome and potential pitfalls.}} The outcome will be an extensible software that automatically processes patient-specific cardiovascular biomechanics simulation results and outputs a wide range of hemodynamic parameters. Attracting users for our new software could be a potential challenge. We are planning to integrate HemoPost with SimVascular and encourage SimVascular users to adopt HemoPost for efficient post-processing of their results. Additionally, we have a rigorous plan to collaborate with several researchers (many of them are not SimVascular users) to test our software. We will require all trainees in our labs to commit changes to the code repository, so that their contributions will endure after they leave and migrate to other institutions.
+
+
+%\noindent\textbf{\ul{Future extension and sustainablity:}} 
+
+
+\vspace{-.4cm}
+\subsection{Task 2: Novel analysis of WSS data: topological WSS measures. }
+\vspace{-.2cm}
+\noindent\textbf{\ul{Rationale.}} Traditional WSS measures are mainly based on the effect of shear stress on endothelial cells, a key regulator of vascular health~\cite{Davies95,Davies09}. However, our team has pioneered a series of work demonstrating the close connection between WSS vectors and near-wall transport. Namely, WSS vectors provide a first-order approximation of the near-wall velocity~\cite{Arzanietal16}. Therefore, WSS vectors could be used to develop surface  transport models to study biological transport processes near the wall~\cite{Arzanietal16,Arzanietal16b}. Such transport processes are known to play an important role in cardiovascular disease~\cite{Ethier02,Tarbell03}. 
+
+\noindent\textbf{\ul{Significance.}} Analyzing WSS from a near-wall transport perspective, requires discrete computational geometry expertise (analyzing surface vector fields on discrete arbitrary surfaces). PI Arzani's prior work in this area were done as an extension of the C++ code developed by Co-PI Chen and colleagues as a results of several years of research. We plan to integrate these tools within our Python VTK framework and make them accessible to the community. Interestingly, recently, researchers have expressed interest in using such models, yet due to the complexity involved in developing such tools they have developed naive alternative methods~\cite{MazziSB3C19}. Surface transport models based on WSS and topological analysis of WSS significantly reduce the computational cost compared to standard 3D continuum models (a few seconds on a laptop versus a couple of days on a cluster). 
+
+
+
+
+
+\noindent\textbf{\ul{Work planned:}} \\
+\noindent\textbf{\ul{a) Develop a module for topological analysis of WSS vector fields: WSS fixed point detection and quantification. }}
+HemoPost will detect, classify, and process WSS fixed points (critical points). In our recent paper~\cite{ArzaniShadden18}, we have introduced the importance of WSS fixed points in cardiovascular flow. WSS fixed points are important footprints of flow structures on the wall, could be used along with WSS manifolds to study near-wall transport, and could potentially adversely impact endothelial cell function. To detect WSS fixed points on the surface mesh, we will locate the triangular surface elements whose Poincar\'e indices are non-trivial (i.e., 1 or -1)~\cite{TricocheScheuermannHagen01}. Next, the WSS vector field is linearized around the fixed points $\mathbf{x}_0$, i.e., $ \overline{\bold{\tau}  } (\mathbf{x})= \overline{\bold{\tau}  } (\mathbf{x}_0) +J_{\mathbf{x}_0} (\mathbf{x}-\mathbf{x}_0)$, where $J_{\mathbf{x}_0}=\nabla  \overline{\bold{\tau}  } (\mathbf{x}_0)$ is the Jacobian of WSS vector ($ \overline{\bold{\tau}  } $), from which the two eigenvalues/eigenvectors are computed. The type of fixed point (source, sink, saddle, etc.) is determined based on the eigenvalues of $J_{\mathbf{x}_0}$~\cite{ArzaniShadden18}. Hemopost will output the location of fixed points with their type tagged. Finally, to quantify the effect of fixed points on endothelial cells, the WSS fixed point exposure time (WSSfET)  measure is computed for each surface element to quantify the total amount of time that the element is exposed to WSS fixed points (with appropriate normalization)~\cite{ArzaniShadden18}. The measure can account for the magnitude of the eigenvalues to account for the strength of each fixed point. 
+
+\newpage
+
+\begin{wrapfigure}[16]{r}{2.7in}
+  \centering
+  \vspace*{-.4cm}
+    \includegraphics[width=2.7in]{figs/WSS_method.pdf}
+  \caption{Near-wall transport analysis based on WSS. WSSET, WSS LCS, and the surface transport model is shown. }
+  \label{fig:AAALCS}
+\end{wrapfigure}
+
+
+\noindent\textbf{\ul{b) Develop a module for topological analysis of WSS vector fields: WSS manifolds and near-wall transport. }}
+Our research team has pioneered the concept of WSS Lagrangian coherent structures (WSS LCS) or WSS manifolds. HemoPost will identify WSS LCS  by computing the stable and unstable manifolds (topological features) of the time-average WSS (TAWSS) vector. Namely, the saddle type fixed points in the TAWSS vector field~\cite{ArzaniShadden18} are detected (as explained above) and the eigenvectors of the linearized vector field around the fixed points are computed. The linearized vector field are calculated using the Jacobian of TAWSS. Subsequently, these fixed points are perturbed along the eigenvector directions and integrated in forward/backward time to trace out the manifolds. Forward time integration of the two perturbed trajectories along the two sides of the eigenvector corresponding to the positive eigenvalue traces out the WSS unstable manifold (attracting WSS LCS) whereas backward time integration along the eigenvector corresponding to the negative eigenvalue traces out the WSS stable manifold (repelling WSS LCS). The surface trajectories are generated using our novel surface transport model~\cite{Arzanietal16,Arzanietal16b} where tracers are tracked on the no-slip surface based on near-wall velocity (a scale of WSS vector). The WSS LCS could be used to predict localized hotspots in near-wall biological transport processes. To provide a more quantitative measure, HemoPost will quantify our new WSS exposure time (WSSET) measure~\cite{Arzanietal16b}. The idea is to isolate the vessel wall surface and seed tracers on the entire surface (triangular surface mesh). These tracers are computationally confined to stay on the wall, however, they represent biochemicals in thin concentration boundary layers. In a Lagrangian framework, these tracers are advected/integrated on the surface based on the near-wall velocity (a scale of WSS~\cite{GambarutoDoorlyYamaguchi10,Arzanietal16}). To quantify near-wall stagnation and concentration of biochemicals, WSSET for each surface element measures the total amount of time that all of the tracers spend inside that element (with appropriate normalization)~\cite{Arzanietal16b}. An overview of the process in an aortic aneurysm is shown in Fig.~\ref{fig:AAALCS}. 
+
+ 
+
+\noindent\textbf{\ul{c) Develop modules for geometrical analysis on discrete surfaces. }}
+We recognize the amount of effort and expertise required in developing discrete computational geometry tools for surface meshes. We aim to incorporate our team's expertise in this area and integrate relevant tools that we think the cardiovascular modeling community could benefit from. A module will be developed to track particles confined on arbitrary shaped surface meshes. The users can seed massless particles (tracers) in a region of interest and track them based on the near-wall velocity (a scale of WSS vector field and therefore a surface vector field tangent to the surface). The input WSS data could be unsteady. The users can control how often a new set of tracers are released and tracked. Also, diffusive transport (random walk) as well as the second order effect of transport normal to the wall will be integrated~\cite{Arzanietal16} and the users will have the option to activate these features for a more accurate near-wall transport model. Additionally, a geodesic distance calculator feature will be developed to enable calculation of distances (e.g. between two particles) on discrete surfaces~\cite{DevadossORourke11}. Finally, the users will be able to develop their own near-wall transport measures based on these modules.
+
+
+\noindent\textbf{\ul{d) Develop long-term release support, test suites, documentation, and benchmarking strategies. }} 
+We will use Pip for long-term release support. PROVIDE MORE INFO. To promote long-term sustainability, continuous integration tests will be designed using Travis. We will check for coding style to ensure our software is maintainable, and perform static analysis of our code. We will summarize these processes, and provide reference to existing documentation, so that future developers can adhere to the coding and design standards we develop. We will create a GitHub Wiki to document our code. The documentation will provide information on software structure, examples on how different capabilities of our software could be used, and demonstrate how developers can define new hemodynamic measures and extend our software. We will also develop benchmarks to validate our software. Since our software mainly deals with data defined on surface meshes, we will design validation benchmarks based on spheres and cylinders where analytical differential geometry calculus could be performed. Namely, analytically defined surface vector fields on a sphere and cylinder will be defined based on polar coordinates. The surface vector fields will be defined such that they vary in space and time. We will also create discrete surface meshes on the same sphere and cylinder, and include the same surface vector fields as discrete data. Several measures (such as gradients, near-wall transport, etc) will be computed and compared to the analytical results. 
+
+\noindent\textbf{\ul{Expected outcome and potential pitfalls.}} The outcome will be a VTK-based open-source software for novel topological analysis of WSS. Additionally, advanced users could use HemoPost to develop their own surface transport models. Developing computational geometry tools on arbitrary shaped discrete surfaces is a challenging task. This challenge is mitigated by having in place a highly experienced team (co-I Chen's group) that has developed several related tools. We will also leverage existing VTK capabilities in code development.  
+
+
+%\noindent\textbf{\ul{Future extension and sustainability:}} 
+
+
+\subsection{Task 3: Novel visualization of data: surface-based visualization of stress tensor and WSS. }
+\vspace{-.2cm}
+\noindent\textbf{\ul{Rationale.}} Visualizing WSS vectors, stress tensors, and their rich features is not an easy task. WSS vectors and symmetric stress tensors have 3 and 6 components, respectively. While it is possible to visualize WSS streamlines in ParaView (an open-source visualization software based on VTK) using the surface line integral convolution (surfaceLIC) technique, many features of WSS will not be visualized. Additionally, visualizing tensors, especially on curved surfaces, with standard open-source visualization software like ParaView is not possible. We will incorporate recent advancements in surface vector field and tensor field visualization in our software. Co-PI Chen is an expert in developing stress and vector field visualization tools. 
+
+\noindent\textbf{\ul{Significance.}} While quantitative analysis of hemodynamics is important in improving our understanding of cardiovascular disease and detecting disease biomarkers, advanced visualization of these datasets will improve our understanding of the fundamental physical processes in complex blood flow environments in an intuitive and qualitative way. 
+
+\noindent\textbf{\ul{Work planned:}} \\
+\noindent\textbf{\ul{a) Develop advanced visualization toolkits for novel visualization of WSS vector field data.  }} 
+%GUONING: Propose to integrate surface vector field visualization tools. Surface streamlines (e.g. surfaceLIC) is already in ParaView so we need some techniques beyond that. We would like something that helps us visualize surface vector field topology features (e.g. divergence, manifolds ... ).  Some of your recent work that seem relevant are: 1- Enhanced vector field visualization via Lagrangian accumulation 2- An integral curve attribute based flow segmentation. 
+We will integrate the evenly spaced streamline placement technique \cite{spencer2009evenly} to HemoPost to enable a dense visualization of surface WSS vector fields in addition to the surfaceLIC visualization. The advantage of the streamline place over surfaceLIC is its ability to adjust the density of streamlines to achieve a level-of-detail visualization. To further support the level-of-detail visualization, clustering techniques will be implemented to first classify streamlines (or trajectories in general) having similar physical~\cite{zhang2016integral} or geometric~\cite{shiametric, shi2019integral} characteristics into different groups, from which representative streamlines can then be selected to achieve a reduced and abstract representation of the WSS vector field. In addition, we will provide the topology-based visualization based on the topological analysis result achieved in Task 2. In particular, we will migrate the techniques developed by Co-PI Chen to visualize the complete topology of the surface WSS vector field, including the detected fixed points, periodic orbits, and separatrices (i.e. the stable and unstable manifolds). A graph view that summarizes the connectivity between topological features will be provided~\cite{chen07}. We will also provide the option of computing and visualizing the discrete topology of WSS vector field using Morse decomposition introduced by Co-PI Chen~\cite{chen2008efficient,hierMorse12}. Recently, Co-PI Chen introduced a Lagrangian accumulation framework that enables the encoding of the average physical characteristics of a massless particle (a tracer) along its trajectory~\cite{zhang2018enhanced}. This can be useful for the visualization of a number of WSS-based measures. We will incorporate this framework into HemoPost.
+
+\noindent\textbf{\ul{b) Develop advanced visualization toolkits for novel visualization of stress tensor field data.  }} 
+%GUONING: I know your advisor has done lots of work on visualization of 3D symmetric tensor fields (he also has a chapter for solid mechanics, which is what we are aiming here). Please add/modify the paragraph below if necessary
+%The stress tensor data is often visualized by individual components. However, recent advances in visualization of tensor fields~\cite{ZhangZhang15} have provided a unique opportunity for integrated visualization of structural stress tensor fields obtained from patient-specific simulations~\cite{Meuschkeetal17}. We will develop such visualization tools within HemoPost to enable visualization of principal stress directions, corresponding stress magnitudes, and  tensorial visualization (simultaneous visualization of vector and scalar data). We will integrate proposed techniques such as hyper line integral convolution (HyperLIC)~\cite{ZhengPang03}, and different glyph-based visualization techniques including, 3D superquadric visualization~\cite{Kindlmann04}, 2D kite visualization~\cite{SchultzKindlmann10}, and 2D streamline-based or scatterplot glyph visualization~\cite{Meuschkeetal17}.
+The stress tensor data is often visualized by individual components. However, certain important information encoded in stress tensor, such as the anisotropy orientation of stress and the structure of the stress tensor field, can only be revealed by using these non-independent components collectively (i.e. simultaneous visualization of vector and scalar properties of tensors). Recent advances in visualization of tensor fields~\cite{ZhangZhang15} have provided a unique opportunity for integrated visualization of structural stress tensor fields obtained from patient-specific simulations~\cite{Meuschkeetal17}. Glyph-based approaches (e.g., superquadric glyphs~\cite{Kindlmann04}, 2D kite glyph~\cite{SchultzKindlmann10}, scatterplot glyph visualization~\cite{Meuschkeetal17}, etc.), geometric-based methods (e.g., hyper-streamline~\cite{chen2008interactive} and tensor-line~\cite{hlawitschka2007tensor}), texture-based techniques (e.g., hyperLIC~\cite{ZhengPang03} and image-based flow visualization technique, IBFV, for tensor fields~\cite{chen2008interactive,zhang2006interactive}) have been introduced to the visualization community in the past decades to reveal the anisotropy information and the geometry configuration of the tensor field locally and globally. We plan to implement the extended IBFV for surface tensor fields and the evenly spaced hyper-streamline placement~\cite{chen2008interactive,zhang2008asymmetric,chen2011asymmetric} to visualize principal stress directions. We will also incorporate a glyph packing technique coupled with a number of different glyph designs for second order symmetric tensor fields on surfaces to HemoPost to show the stress magnitudes and orientation locally (based on the size and orientation of glyphs). Co-PI Chen will lead the implementation of these visualization functionality based on his past experience~\cite{chen2008interactive,chen2011asymmetric}. In addition, we will explore the topology-based visualization technique to compute and visualize the topology of the  stress tensor field~\cite{kratz2013visualization}.
+
+
+\noindent\textbf{\ul{c) Release the developed tools integrated within HemoPost as well as a plugin for ParaView.}}
+%GUONING: Please discuss how the above tools could be integrated within our Python VTK software (using appropriate GUI). Also, how we can create a plugin for paraView. 
+We will implement the above visualization functionality for WSS vector fields and tensor fields based on VTK. A QT-based graphical user interface (GUI)~\cite{QT} will be provided to allow the user to interact with different visualizations. Alternatively, the developed VTK-based visualization components can be wrapped as a number of plug-ins for ParaView for users who are more familiar with ParaView interface to use. In particular, these visualization options will be implemented as the additional filters for ParaView coupled with their respective parameters added to the ParaView parameter setting GUI. We will follow the instructions of adding ParaView plugins~\cite{ParaViewPlugin} to achieve that.
+
+
+\noindent\textbf{\ul{Expected outcome and potential pitfalls.}}
+The outcome of this task will be a VTK-based visualization software accompanying with a QT-based GUI and a number of plug-ins for ParaView. In addition, advanced users could use HemoPost to develop customized visualization components to display their specific WSS vector field and stress tensor measures. Similar to the previous analysis, developing robust and accurate visualization for vectorial and tensorial data on curved surfaces is challenging due to none-flat configuration on surfaces. Co-PI Chen has extensive experiences on surface-based analysis and visualization of vector and tensor data. He will leverage the parallel transport on curved surfaces to address the accurate interpolation of vectorial and tensorial values and an image-based visualization strategy that projects the 3D information into the image plane for a fast and robust visualization to mitigate the challenge of visualization on surfaces. We expect our open-source visualization tools to be a highly valuable and exciting tool for fluid and solid mechanics researchers beyond cardiovascular biomechanics. 
+
+%\noindent\textbf{\ul{Future extension and sustainability:}} 
+
+
+\subsection{Task 4: Develop capabilities for identification of statistical correlations between clinical data and computational measures.}
+\vspace{-.2cm}
+\noindent\textbf{\ul{Rationale.}} Often the goal in quantifying various hemodynamics measures is to find statistical correlations with clinical data. Our software will automate and streamline this process. Namely, given quantitative clinical data, the software will seek correlations between all computed measures and the clinical data.
+
+\noindent\textbf{\ul{Significance.}} A comprehensive statistical analysis might detect predictive biomarkers of cardiovascular disease. HemoPost will enable an automated framework to potentially detect such biomarkers. 
+
+\noindent\textbf{\ul{Work planned:}} \\
+\noindent\textbf{\ul{a) Quantify global correlation coefficients between all hemodynamic measures and input clinical data.}}
+Sometimes the clinical data is defined in a global fashion for each patient (e.g. aneurysm sac volume increase or increase arterial stenosis percentage). Under such circumstances, the cardiovascular engineers would like to correlate globally averaged hemodynamic measures to given clinical data. Our statistical analysis module will allow the users to interactively select a region of interest. Subsequently, for each patient, all computed hemodynamic measures will be spatially averaged in this region of interest. HemoPost will compute Spearman and Pearson's correlation coefficients~\cite{Mukaka12} between the pair of spatially averaged hemodynamic measures and input clinical data across all patients. Associated p-values and statistical significance will be quantified. 
+
+
+\noindent\textbf{\ul{b) Quantify local correlation coefficients between all hemodynamic measures and input clinical data.}} 
+A localized correlation study provides a more reliable indication of correlation between hemodynamics and disease progression and based on the quality of medical image data such an analysis is sometimes possible (e.g. localized aneurysm sac growth or localized increase in stenotic plaque cross section area). HemoPost users will be able to define clinical data over the surface mesh where hemodynamic measures are computed (or alternatively over several sectors for each cross section). HemoPost will quantify Spearman and Pearson's  correlation coefficients for each patient and each hemodynamic measure based on the node-wide defined hemodynamic measures and clinical data. One-sample t-test analysis will be performed for each measure to determine the significance of the correlation coefficients across the given patient population. Additionally, principle component analysis (PCA) in conjunction with multiple regression will be used to reduce the dimensionality of the hemodynamic measures and seek correlation between the measures calculated by HemoPost and clinical data.
+
+%For each progression--hemodynamic predictive pair identified, multivariable regression models will be constructed to account for potential confounding by associated clinical factors,
+
+\noindent\textbf{\ul{Expected outcome and potential pitfalls.}}
+The outcome will be an automated and built-on framework for statistical analysis of the measures computed by HemoPost. We will ask our collaborators who have clinical data and are interested in identifying prognostic hemodynamic biomarkers to test this feature of our software. For example, PI Arzani's group will test this software in our American Heart Association funded coronary artery disease project where we are generating patient-specific CFD data in several patients (with followup clinical data available). In the current project, our goal is not to seek hemodynamic biomarkers of disease, however, we would like other groups (including other members of our own groups not funded by this grant) to test these features and provide feedback. Seeking correlation among data often requires data visualization. Using the Qplot functionality from QT library, we will provide basic plotting features  for users to plot the clinical data versus hemodynamics data before deciding on the appropriate statistical approach. 
+%{\color{blue}GUONING: we can use the Qplot functionality from QT library to generate basic plots and charts.}
+
+%\noindent\textbf{\ul{Future extension and sustainability:}} 
+
+
+
+\subsection{Task 5: Closely work with national and international stakeholders in patient-specific computer modeling to test our software in different applications.}
+\vspace{-.2cm}
+\noindent\textbf{\ul{Rationale.}} Close collaboration with stakeholders in patient-specific computer modeling is a key component of our proposal. Our team fully recognizes the importance of engaging stakeholders in patient-specific modeling software development as well as active users of such software. We will closely engage national and international leaders in cardiovascular flow software development and modeling. 
+
+\noindent\textbf{\ul{Significance.}} Our collaboration with a broad range of users in the field of patient-specific computer modeling during software development will assist in enabling its application to a broad range of cardiovascular disease problems, which will ultimately attract more users.
+
+\noindent\textbf{\ul{Work planned:}} \\
+\noindent\textbf{\ul{a) Share the software with several cardiovascular engineering researchers during early development stages to test the software in a broad range of applications. }} 
+
+\noindent\textbf{\ul{b) Integrate the software with the successful and widely used open-source SimVascular project. }}
+Collaborator Marsden and Co-PI Shadden are the PIs for the NSF funded SimVascular project. We will work with Collaborator Marsden to integrate HemoPost within the SimVascular software activities. Namely, after the initial release, an overview of HemoPost and a link to its source code repository and documentation will be included on SimVascular website and advertised on SimVascular's social media pages. SimVascular outputs its simulation results in VTK format, which could be easily read by HemoPost. Our goal is to attract the continuously growing number of SimVascular users to benefit from HemoPost in post-processing their patient-specific blood flow simulations. SimVascular is the first fully open-source software package that starting from medical image data, pre-processes the data, creates computer models, sets up CFD simulations, and runs these simulations to generate patient-specific blood flow results. HemoPost will complete this pipeline by providing comprehensive support for advanced post-processing of these simulations, which is often overlooked by many users. Of course we anticipate to attract patient-specific computer modeling users beyond those of SimVascular. To achieve this goal, HemoPost will provide file conversion support from standard commercial fluid flow modeling software (e.g. Ansys Fluent) to the VTK format.  
+
+\noindent\textbf{\ul{c) In conjunction with SimVascular workshops, provide training to the community during major biomechanics and biofluids conferences.   }}
+PI Arzani, co-PI Shadden, and many of the collaborators on this proposal are active participants of leading biomechanics and fluid mechanics conferences (e.g. Summer Biomechanics, Bioengineering, and Biotransport Conference, SB3C and APS Division of Fluid Dynamics). Collaborator Marsden and Co-PI Shadden have held several successful (well attended) SimVascular workshops during different biomechanics, computational mechanics, and fluid mechanics conferences. In coordination with SimVascular developers, our team will incorporate HemoPost training during future SimVascular workshops at national/international conferences. Our trainings will not only include an introduction to HemoPost but also training on writing post-processing scripts using VTK libraries in Python.  
+
+
+
+
+
+
+
+\vspace{-.5cm}
+\section{Broader Impacts of the Proposed Study}
+%http://nau.edu/CEFNS/CSTL/About-CSTL/
+%UB STEM: more than 70% girls. more than 90% Native Americans. 5 different regional schools. Low income first generation. 
+%NAU: Analytics and assessments. Jerrelds Hopkins. 
+\vspace{-.3cm}
+\begin{tcolorbox}[colback =  green!20!white]
+\paragraph{\ul{Impact.}} Cardiovascular disease remains the leading cause of death in the US. With advances in computational modeling and open-source software developments, there is an ever increasing interest among biomedical engineers and clinicians to perform patient-specific computer modeling of cardiovascular disease. HemoPost will provide an efficient and comprehensive software to post-process the potentially valuable data produced by these simulations. Despite extensive evidence that hemodynamic parameters such as WSS influences cardiovascular complications, we cannot yet use WSS as a strong prognostic biomarker. HemoPost will enable a comprehensive investigation of the different physics behind hemodynamic measures, which will facilitate the identification of potentially valuable biomarkers of disease.
+
+\end{tcolorbox}
+\vspace{-.4cm}
+ \subsection{Education and mentoring}
+\vspace{-.2cm}
+\paragraph{Education.} PI Arzani has developed a new Advanced CFD class. The students use the open-source FEniCS software to develop CFD codes. FEniCS is based on a Python environment programming and VTK libraries could be easily imported. The PI will assign projects to train the students in CFD data post-processing using efficient Python VTK codes. PI Arzani is currently developing a new Cardiovascular Fluid Mechanics class (400 and 500 level). The students are assigned patient-specific CFD simulation projects for the end of semester. The PI will integrate HemoPost into these projects to train the students regarding the significance of data post-processing.   
+At University of Houston, Co-PI Chen has developed two graduate level courses, ``ÄúVisualization''Äù and ``ÄúFeature Detection in Data Analysis'' for the Department of Computer Science. These two courses introduce to the graduate students the theories and practices of data visualization and analysis. In addition to being exposed to the classic visualization and analysis techniques for a number of common data, the students will be tasked to implement some of these techniques and a new visualization system based on the problem they select. The developed HemoPost can be integrated into these two courses. Specifically, this tool can be used to demonstrate to the students the  visualization techniques for vector fields and tensor fields and their applications in practice. A programming assignment will be given to the students to develop customized visualization for the simulated flow and tensor field data generated using SimVascular.
+ 
+\vspace{-.5cm}
+ \paragraph{Undergraduate student involvement in research.} Our team will recruit undergraduate students to work on the project. The PI will apply for NSF REU Supplements as well as existing internal grants to support the undergraduate students. The PI and co-PIs will try to recruit \underline{at least} one underrepresented minority as an undergraduate researcher.  PI Arzani has successfully recruited underrepresented students in the past, e.g., Daniel Marquez, Ashley Blood, and Tristian Vigueria. For example, Tristian's research on atherosclerosis biomechanics is funded by the NSF Southern Nevada Northern Arizona  Louis Stokes Alliances for Minority Participation SNNA LSAMP Program. The undergraduate students will assist in software testing and development. 
+ 
+ 
+ \begin{wrapfigure}[16]{r}{3in}
+  \centering
+  \vspace*{-.6cm}
+    \includegraphics[width=3in]{figs/Viz-VR-00}
+  \caption{Immersive and interactive visualization of patient-specific blood flow. Wall shear stress streamlines obtained from patient-specific simulation of an aortic aneurysm (using SimVascular) are visualized. }
+  \label{fig:vr}
+\end{wrapfigure}
+  
+ \subsection{Immersive visualization of HemoPost data during Flagstaff Festival of Science} 
+Recently, ParaView has added virtual reality (VR) support via an OpenVR plugin. This enables interactive and immersive visualization of data using the SteamVR software and a compatible headset. PI Arzani recently successfully tested this technology for immersive visualization of blood flow data (see Fig.~\ref{fig:vr}). We will integrate HemoPost with ParaView's VR support for exciting and innovative visualization of patient-specific simulations. Specifically, we will use NAU Cline Library's new Virtual Reality Learning Studio during Flagstaff's annual Festival of Science event. The public Flagstaff community (including K-12 students) will be able to interact with this exciting technology and learn about the importance of computer simulation, data post-processing, and visualization with applications to healthcare. 
+
+
+
+ 
+ 
+  \vspace{-.5cm}
+ \subsection{NAU Upward Bound Math-Science} 
+ \vspace{-.2cm}
+ 
+ 
+The Northern Arizona University Upward Bound Math and Science program (NAU UBMS) provides educational activities for high school students in Northern Arizona. The program targets students who are in low income families or students who are first generation college students. \textbf{More than 70\% of the students in UBMS are females and more than 90\% are Native Americans.} It is noteworthy that \textbf{Northern Arizona is home to the majority of the Navajo Nation (the largest US Native American reservation).} The students in the program stay at the NAU campus during the summer for education and outreach activities. 
+  
+ 
+
+\vspace{-.4cm}
+ \paragraph{PI's contribution.} The PI has volunteered to contribute to NAU UBMS through outreach activities. The PI will design a \textbf{\ul{visualization contest}} using ParaView. The students will be given CFD data and are asked to create a beautiful figure. ParaView has various advanced visualization capabilities with an easy to use interface. The students will use these techniques to create beautiful images of blood flow. The students will be exposed to a blend of computer modeling, fluid mechanics, and art. This contest is designed such that the students see the beauty of computer modeling and engineering. \textbf{The PI believes that in order to stimulate student interest in STEM, we need to show them the beauty of STEM.} 
+ 
+ 
+ \vspace{-.3cm}
+\subsection{STEM City} 
+STEM City is an organization established in 2012 by the Flagstaff STEM Consortium~\cite{stemcity}. \textbf{Flagstaff has been declared as America's first STEM community.} STEM City is a collaborative effort between NAU, Coconino Community College, Flagstaff Unified School District, and local charter schools. STEM City has several goals, such as helping teachers in finding STEM professionals for their relevant classroom activities. 
+\vspace{-.6cm}
+ \paragraph{PI's contribution.} The PI has volunteered to assist school teachers involved in STEM City. This will be through classrooms, after-school clubs, or weekend programs. The teachers that are interested in PI's activities will be able to contact the PI. The PI will be able to assist with activities related to computer programing, computer aided engineering design, and mathematical modeling. Examples related to cardiovascular disease and blood flow will be used in such activities. The PI  will help the teachers in the classroom activities. The STEM City activities will target a broader K-12 audience. The PI has previusly gave a lecture to the general audience at the Flagstaff Festival of Science, which was very well received. 
+ 
+  \vspace{-.3cm}
+\subsection{Women and Under-representatives Involvement in Houston} 
+University of Houston (UH) is a Hispanic-Serving Institution designated by the US Department of Education. Among more than $43,000$ students enrolled each year, $30\%$ are Hispanic, $11\%$ African American, and $21\%$ Asian/Pacific Islander. In addition, Co-PI Chen has been supervising a female PhD student via his NSF projects and an African-American undergraduate student and a female undergraduate student via the supplemental REU program. He also taught a number of undergraduate students transferred from local community colleges (e.g., HCC). During the course of this project, Co-PI Chen plans to give talks about open-source software development and creative visualization at UHCSGirls -- an organization for CS major female students to attract more female students. He will work with the Houston-Louis Stokes Alliance for Minority Participation (H-LSAMP) led by John Hardy at UH and enlist his lab with H-LSAMP to recruit and retain well-qualified minority STEM majors. 
+ 
+ 
+ \vspace{-.5cm}
+ \subsection{Assessment of activities}
+  \vspace{-.2cm}
+PI Arzani will work with NAU's Analytics and Assessment office to design a meaningful evaluation of all of the proposed outreach activities. Specifically, the Event Assessment Group within the Analytics and Assessment office will assist the PI in designing assessments to measure the learning outcome of the proposed outreach events.  
+
+
+\section{Timeline}
+
+  
+
+  \begin{center}
+  \vspace{-.5cm}
+\begin{ganttchart}[hgrid, vgrid,  x unit=1.1cm, y unit chart=.4cm,bar/.append style={draw=none, fill=Green},bar height=.8, title label font=\footnotesize]{1}{6}
+\gantttitle{Proposal Timeline}{6} \\
+\gantttitle{Year 1}{2}
+\gantttitle{Year 2}{2}
+\gantttitle{Year 3}{2}\\
+
+\ganttbar{\footnotesize{\color{Green}Task 1}}{1}{3} \ganttnewline
+\ganttbar[bar/.append style={fill=blue}]{\footnotesize{\color{blue}Task 2}}{2}{5} \ganttnewline
+\ganttbar[bar/.append style={fill=red}]{\footnotesize{\color{red}Task 3}}{3}{6} \ganttnewline
+\ganttbar[bar/.append style={fill=Aquamarine}]{\footnotesize{\color{Aquamarine}Task 4}}{3}{4} \ganttnewline
+\ganttbar[bar/.append style={fill=Magenta}]{\footnotesize{\color{Magenta}Task 5}}{1}{6} \ganttnewline
+\ganttbar[bar/.append style={fill=cyan}]{\footnotesize{\color{cyan}Outreach activities}}{2}{6} \ganttnewline
+\ganttbar[bar/.append style={fill=brown}]{\footnotesize{\color{brown}Software dissemination}}{3}{6} \ganttnewline
+
+%\ganttbar[bar/.append style={fill=red}]{Aim 3b}{1}{4} \ganttnewline
+\end{ganttchart}
+\end{center} 
+
+
+ \vspace{-.7cm}
+\section{Results from Prior NSF Support}
+ \vspace{-.2cm}
+PI Arzani has not been previously  supported by NSF as a PI. 
+
+Co-PI {\bf G. Chen} received an NSF grant, IIS-1553329, ``CAREER: Generating Hierarchical Vector-Valued Data Summaries for Scalable Flow Data Processing, Analysis and Visualization,'' 02/01/2016 - 01/31/2021.
+\textbf{Intellectual Merit:}
+An attribute accumulation framework for vector field visualization and analysis is proposed~\cite{zhang2016integral,zhang2018enhanced, TAC2019}. 
+A correlation analysis framework for unsteady flow analysis~\cite{berenjkoub2018visual}. 
+A clustering framework for flow data summarization and visualization~\cite{shiametric,shi2017analysis,shi2019integral}
+A number of structured hex-meshing techniques are introduced~\cite{gaoa2016local, Gao2017,gao2017evaluating,xu2018hexCG, Xu2017AdpHex}. 
+\textbf{Broader Impacts:}
+This grant has been used to support four Ph.D. students, five REU students, and has resulted in 14 publications~\cite{zhang2016integral,shiametric,shi2017analysis,gao2017evaluating,Gao2017,Xu2017AdpHex,xu2018hexCG,zhang2018enhanced,xu2018hexahedral,berenjkoub2018visual,govyadinov2018robust, TAC2019,shi2019integral,VascularGraph2019}.
+
